@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yodai</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f4f4f4, #bbc4b8);            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: rgba(51, 51, 51, 0.91);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        section {
+            padding: 20px;
+            margin: 10px 0;
+            background-color: rgba(255, 255, 255, 0.52);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 1rem;
+        }
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .team-section {
+            text-align: center;
+        }
+        .team-section img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 10px;
+        }
+        .team-member {
+            display: inline-block;
+            margin: 10px;
+        }
+        .team-member p {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+        /* Hide iframe initially */
+        #pdfViewer {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img style="width: 15%; min-width: 300px;" src="static/yodai-logo.png" alt="logo">
+    </header>
+
+    <section>
+        <h2>Welcome to yodai Group</h2>
+        <p>Welcome to the official announcements page of yodai Group! Stay updated with the latest information and news about our projects and activities.</p>
+    </section>
+
+    <section>
+        <h2>Documents</h2>
+        <ul id="documentList">
+            <!-- <li><a href="#" onclick="togglePDF('documents/study1.pdf')">Document 1</a></li> -->
+            <p>Documents will be shown here!</p>
+
+        </ul>
+
+        <!-- Hidden iframe, which will be shown when a document is clicked -->
+        <iframe id="pdfViewer" width="100%" height="500px">
+            This browser does not support PDFs. Please download the PDF to view it: 
+            <a href="documents/document1.pdf">Download PDF</a>.
+        </iframe>
+    </section>
+
+    <section>
+        <h2>Who We Are</h2>
+        <div class="team-section">
+            <div class="team-member">
+                <img src="static/yasemin.jpeg" alt="Member 1">
+                <p>Yasemin AKIN</p>
+            </div>
+            <div class="team-member">
+                <img src="static/deniz.jpeg" alt="Member 2">
+                <p>Deniz Can ÖZDEMİR</p>
+            </div>
+            <div class="team-member">
+                <img src="static/ogi2.png" alt="Member 3">
+                <p>Oğulcan KARAKOLLUKÇU</p>
+            </div>
+            <div class="team-member">
+                <img src="static/alphan_pp.jpeg" alt="Member 4">
+                <p>Alphan TULUKCU</p>
+
+            </div>
+            <div class="team-member">
+                <img src="static/ilhami.jpeg" alt="Member 5">
+                <p>İlhami ULUĞTÜRKKAN</p>
+            </div>
+        </div>
+        <p>We are yodai Group, a passionate team of developers and enthusiasts dedicated to building solutions that make a difference. Our goal is to deliver high-quality software projects that solve real-world problems.</p>
+        <p>We specialize in web development, AI, and data-driven solutions, and are always open to new challenges and collaborations. Join us on our journey to create impact and innovation.</p>
+    </section>
+
+    <footer>
+        &copy; 2024 Yodai Group. All rights reserved.
+    </footer>
+
+    <script>
+        var currentPDF = ""; // Store the currently displayed PDF
+
+        // Function to toggle the PDF viewer
+        function togglePDF(pdfUrl) {
+            var iframe = document.getElementById('pdfViewer');
+            
+            if (currentPDF === pdfUrl) {
+                // If the same PDF is clicked again, hide the iframe
+                iframe.style.display = 'none';
+                currentPDF = ""; // Reset the current PDF
+            } else {
+                // Show the iframe with the new PDF
+                iframe.src = pdfUrl;
+                iframe.style.display = 'block';
+                currentPDF = pdfUrl; // Update the current PDF
+            }
+        }
+    </script>
+
+</body>
+</html>
