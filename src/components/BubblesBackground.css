@@ -1,0 +1,28 @@
+.bubble-container {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.bubble {
+    position: absolute;
+    opacity: 0.8;
+    will-change: transform;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.bubble:hover {
+    opacity: 1;
+}
+
+.bubble-overlay {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    opacity: 0.5;
+}

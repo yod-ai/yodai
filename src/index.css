@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+:root {
+    --brand-light-gray: #D2D2E7;
+    --brand-red: #DB4437;
+    --brand-peach: #EDA19A;
+    --brand-black: #000000;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+}
