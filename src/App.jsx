@@ -322,6 +322,39 @@ function App() {
                                 </div>
                             )}
                         </div>
+                        <div className="mb-12">
+                            <h2 className="text-2xl md:text-3xl font-bold text-[#DB4437] mb-4">
+                                CS492 Documents
+                            </h2>
+                            <ul className="list-disc ml-5 space-y-2">
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="text-blue-500 hover:underline"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            toggleCS492Doc(`${import.meta.env.BASE_URL}documents/T2443_Final_report.pdf`);
+                                        }}
+                                    >
+                                        Final Design Report
+                                    </a>
+                                </li>
+                            </ul>
+                            {cs492Doc && (
+                                <div className="mt-6">
+                                    <iframe
+                                        src={cs492Doc}
+                                        width="100%"
+                                        height="500px"
+                                        className="border rounded-md"
+                                        title="CS492 Document Viewer"
+                                    >
+                                        This browser does not support PDFs. Please download the PDF to view it:{" "}
+                                        <a href={cs492Doc}>Download PDF</a>.
+                                    </iframe>
+                                </div>
+                            )}
+                        </div>
                     </section>
                 );
             default:
