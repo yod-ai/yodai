@@ -336,20 +336,6 @@ function App() {
                                 </div>
                             )}
                         </div>
-                        <ul className="list-disc ml-5 space-y-2">
-                            <li>
-                                <a
-                                    href="#"
-                                    className="text-blue-500 hover:underline"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        toggleCS492Doc(`${import.meta.env.BASE_URL}documents/T2443_Final_report.pdf`);
-                                    }}
-                                >
-                                    Final Design Report
-                                </a>
-                            </li>
-                        </ul>
                     </section>
                 );
             default:
