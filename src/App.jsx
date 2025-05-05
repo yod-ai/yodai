@@ -1,19 +1,27 @@
 import { useState, useRef } from "react";
 import BubblesBackground from "./components/BubblesBackground";
 import CustomNavbar from "./components/CustomNavbar";
+const galleryImagesImports = import.meta.glob('/public/static/gallery/*.{jpg,jpeg,png,gif}', { eager: true });
 
 const teamMembers = [
-    { img: `${import.meta.env.BASE_URL}static/deniz-photo.jpeg`, name: "Deniz Can ÖZDEMİR" },
-    { img: `${import.meta.env.BASE_URL}static/ogulcan-photo.jpeg`, name: "Oğulcan KARAKOLLUKÇU" },
-    { img: `${import.meta.env.BASE_URL}static/yasemin-photo.jpeg`, name: "Yasemin AKIN" },
-    { img: `${import.meta.env.BASE_URL}static/alphan-photo.jpeg`, name: "Alphan TULUKCU" },
-    { img: `${import.meta.env.BASE_URL}static/ilhami-photo.jpeg`, name: "İlhami ULUĞTÜRKKAN" }
+    { img: `${import.meta.env.BASE_URL}static/deniz-photo.jpeg`, name: "Deniz Can ÖZDEMİR", logbook: "https://docs.google.com/document/d/1mtvb0HKeggUg9kwF1C7yGAtSEeQgB09_i7AYNjxyeB0/edit?usp=sharing" },
+    { img: `${import.meta.env.BASE_URL}static/ogulcan-photo.jpeg`, name: "Oğulcan KARAKOLLUKÇU", logbook: "https://docs.google.com/document/d/1XTHuuVRtueVLQsyxXQsrNw-JORJeEdW74ZWDaI_LsM4/edit?usp=sharing" },
+    { img: `${import.meta.env.BASE_URL}static/yasemin-photo.jpeg`, name: "Yasemin AKIN", logbook: "https://docs.google.com/document/d/1Ch5PCxWdFyLAbVYfG-ayP9dalDFXPYj_5hxb3t73r38/edit?usp=sharing" },
+    { img: `${import.meta.env.BASE_URL}static/alphan-photo.jpeg`, name: "Alphan TULUKCU", logbook: "https://docs.google.com/document/d/1-3-wbsSSmi2D-E5Se9BIEFexhQXpwHVuCL4Cb6jae3A/edit?usp=sharing" },
+    { img: `${import.meta.env.BASE_URL}static/ilhami-photo.jpeg`, name: "İlhami ULUĞTÜRKKAN", logbook: "https://docs.google.com/document/d/1HfMKsXYYd-Thf-FRm0so2zp-CUFXN31_VrQwXXP2rn8/edit?usp=sharing" }
 ];
+
+const galleryImages = Object.keys(galleryImagesImports)
+    .map(path => path.replace('/public/', import.meta.env.BASE_URL))
+    .sort();
 
 function App() {
     const [activeTab, setActiveTab] = useState("home");
     const [cs491Doc, setCs491Doc] = useState(null);
     const [cs492Doc, setCs492Doc] = useState(null);
+    const [userManualDoc, setUserManualDoc] = useState(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
     const teamContainerRef = useRef(null);
 
     const toggleCS491Doc = (docPath) => {
@@ -22,6 +30,10 @@ function App() {
 
     const toggleCS492Doc = (docPath) => {
         setCs492Doc((prev) => (prev === docPath ? null : docPath));
+    };
+
+    const toggleUserManualDoc = (docPath) => {
+        setUserManualDoc((prev) => (prev === docPath ? null : docPath));
     };
 
     const renderTabContent = () => {
@@ -73,6 +85,14 @@ function App() {
                                         <p className="text-sm text-gray-700">
                                             Senior Computer Science Student @ Bilkent University
                                         </p>
+                                        <a
+                                            href={member.logbook}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="mt-2 inline-block text-[#DB4437] text-sm hover:font-bold"
+                                        >
+                                            Logbook
+                                        </a>
                                     </div>
                                 ))}
                             </div>
@@ -82,20 +102,34 @@ function App() {
                             <h2 className="text-2xl md:text-4xl font-bold text-[#DB4437] text-center mb-4 pt-15 md:pt-10 pb-3 md:pb-5">
                                 Gallery
                             </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                {[
-                                    `${import.meta.env.BASE_URL}static/PHOTO-1.jpg`,
-                                    `${import.meta.env.BASE_URL}static/PHOTO-2.jpg`,
-                                    `${import.meta.env.BASE_URL}static/PHOTO-3.jpg`
-                                ].map((src, index) => (
-                                    <div key={index} className="bg-white rounded-sm shadow-lg p-2">
-                                        <img
-                                            src={src}
-                                            alt={`Gallery Image ${index + 1}`}
-                                            className="w-full h-32 md:h-48 object-cover rounded-sm"
-                                        />
-                                    </div>
-                                ))}
+                            <div className="relative max-w-2xl mx-auto">
+                                <div className="bg-white rounded-sm shadow-lg p-2 aspect-[4/3] flex items-center justify-center">
+                                    <img
+                                        src={galleryImages[currentImageIndex]}
+                                        alt={`Gallery Image ${currentImageIndex + 1}`}
+                                        className="max-h-[500px] max-w-full object-contain rounded-sm"
+                                    />
+                                </div>
+
+                                <div className="flex justify-between items-center mt-4">
+                                    <button
+                                        onClick={() => setCurrentImageIndex(prev => (prev === 0 ? galleryImages.length - 1 : prev - 1))}
+                                        className="bg-[#DB4437] text-white px-4 py-2 rounded-sm hover:bg-[#C53929] transition-colors"
+                                    >
+                                        Back
+                                    </button>
+
+                                    <p className="text-center">
+                                        {currentImageIndex + 1} / {galleryImages.length}
+                                    </p>
+
+                                    <button
+                                        onClick={() => setCurrentImageIndex(prev => (prev === galleryImages.length - 1 ? 0 : prev + 1))}
+                                        className="bg-[#DB4437] text-white px-4 py-2 rounded-sm hover:bg-[#C53929] transition-colors"
+                                    >
+                                        Forward
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -306,8 +340,6 @@ function App() {
                                         Detailed Design Report
                                     </a>
                                 </li>
-                            </ul>
-                            <ul className="list-disc ml-5 space-y-2">
                                 <li>
                                     <a
                                         href="#"
@@ -332,6 +364,116 @@ function App() {
                                     >
                                         This browser does not support PDFs. Please download the PDF to view it:{" "}
                                         <a href={cs492Doc}>Download PDF</a>.
+                                    </iframe>
+                                </div>
+                            )}
+                        </div>
+                    </section>
+                );
+            case "demoMaterial":
+                return (
+                    <section className="max-w-7xl mx-auto p-4 md:p-6 pt-10 md:pt-20">
+                        <div className="text-center mb-8">
+                            <h1 className="text-4xl md:text-6xl font-extrabold text-[#DB4437]">
+                                Final Demo Material
+                            </h1>
+                        </div>
+                        <div className="mb-12 bg-white rounded-lg shadow-lg p-6">
+                            <h2 className="text-2xl md:text-3xl font-bold text-[#DB4437] mb-4">
+                                Links to Learn More About Köpük:
+                            </h2>
+                            <ul className="ml-5 space-y-4">
+                                <li>
+                                    <a
+                                        href="https://github.com/yod-ai"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-500 hover:underline flex items-center"
+                                    >
+                                        <img
+                                            src={`${import.meta.env.BASE_URL}static/github-icon.svg`}
+                                            alt="GitHub"
+                                            className="w-6 h-6 mr-2"
+                                        />
+                                        Our GitHub Organization Page
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.kopuk.org"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-500 hover:underline flex items-center"
+                                    >
+                                        <img
+                                            src={`${import.meta.env.BASE_URL}static/internet.svg`}
+                                            alt="Web"
+                                            className="w-6 h-6 mr-2"
+                                        />
+                                        Web Site Link
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://testflight.apple.com/join/kopuklink"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-500 hover:underline flex items-center"
+                                    >
+                                        <img
+                                            src={`${import.meta.env.BASE_URL}static/testflight.svg`}
+                                            alt="TestFlight"
+                                            className="w-6 h-6 mr-2"
+                                        />
+                                        IOS TestFlight Download Link
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.canva.com/design/DAGjmeiXMbI/AgYDOhtWt6HC2ZYPIQTzpA/edit?utm_content=DAGjmeiXMbI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-500 hover:underline flex items-center"
+                                    >
+                                        <img
+                                            src={`${import.meta.env.BASE_URL}static/canva.svg`}
+                                            alt="Canva"
+                                            className="w-6 h-6 mr-2"
+                                        />
+                                        User Manual (Canva Link)
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="text-blue-500 hover:underline flex items-center"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            toggleUserManualDoc(`${import.meta.env.BASE_URL}documents/kullanici_kilavuzu.pdf`);
+                                        }}
+                                    >
+                                        <img
+                                            src={`${import.meta.env.BASE_URL}static/report.svg`}
+                                            alt="Canva"
+                                            className="w-6 h-6 mr-2"
+                                        />
+                                        User Manual (PDF)
+                                    </a>
+                                </li>
+                            </ul>
+                            {userManualDoc && (
+                                <div className="mt-6">
+                                    <iframe
+                                        src={userManualDoc}
+                                        width="100%"
+                                        height="500px"
+                                        className="border rounded-md"
+                                        title="Kullanıcı Kılavuzu"
+                                    >
+                                        Bu tarayıcı PDF'leri desteklemiyor. PDF'i görüntülemek için indiriniz:{" "}
+                                        <a href={userManualDoc}>PDF İndir</a>.
                                     </iframe>
                                 </div>
                             )}
