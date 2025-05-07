@@ -354,18 +354,6 @@ function App() {
                                 </li>
                                 <li>
                                     <a
-                                        href="#"
-                                        className="text-blue-500 hover:underline"
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            toggleCS492Doc(`${import.meta.env.BASE_URL}documents/final_demo.pdf`);
-                                        }}
-                                    >
-                                        Final Demo Presentation (Suggested to use Canva Link Below)
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
                                         href="https://www.canva.com/design/DAGme3Bs2oQ/NXSpXhYsUoLEXW5_Hng4mg/edit?utm_content=DAGme3Bs2oQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
                                         target="_blank"
                                         rel="noopener noreferrer"
