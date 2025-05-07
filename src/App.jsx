@@ -413,6 +413,7 @@ function App() {
                                         Web Site Link
                                     </a>
                                 </li>
+                                {/*}
                                 <li>
                                     <a
                                         href="https://testflight.apple.com/join/kopuklink"
@@ -428,6 +429,7 @@ function App() {
                                         IOS TestFlight Download Link
                                     </a>
                                 </li>
+                                */}
                                 <li>
                                     <a
                                         href="https://www.canva.com/design/DAGjmeiXMbI/AgYDOhtWt6HC2ZYPIQTzpA/edit?utm_content=DAGjmeiXMbI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
@@ -451,7 +453,7 @@ function App() {
                                         rel="noopener noreferrer"
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            toggleUserManualDoc(`${import.meta.env.BASE_URL}documents/kullanici_kilavuzu.pdf`);
+                                            toggleUserManualDoc(`${import.meta.env.BASE_URL}documents/manual.pdf`);
                                         }}
                                     >
                                         <img
@@ -460,6 +462,21 @@ function App() {
                                             className="w-6 h-6 mr-2"
                                         />
                                         User Manual (PDF)
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://docs.google.com/spreadsheets/d/1V56GfH7iYX-GA5TFg_cvCIwOSY3PMefDZZR3nnogJgc/edit?usp=sharing"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-500 hover:underline flex items-center"
+                                    >
+                                        <img
+                                            src={`${import.meta.env.BASE_URL}static/survey.svg`}
+                                            alt="Survey Results"
+                                            className="w-6 h-6 mr-2"
+                                        />
+                                        Pet Adoption Habits & Preferences Survey Results
                                     </a>
                                 </li>
                             </ul>
