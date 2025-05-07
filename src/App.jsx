@@ -294,7 +294,7 @@ function App() {
                                             toggleCS491Doc(`${import.meta.env.BASE_URL}documents/t2443_demo.pdf`);
                                         }}
                                     >
-                                        Demo Presentation (Suggested to use Canva Link Below)
+                                        Early Demo Presentation (Suggested to use Canva Link Below)
                                     </a>
                                 </li>
                                 <li>
@@ -304,7 +304,7 @@ function App() {
                                         rel="noopener noreferrer"
                                         className="text-blue-500 hover:underline"
                                     >
-                                        Demo Presentation (Canva Link)
+                                        Early Demo Presentation (Canva Link)
                                     </a>
                                 </li>
                             </ul>
@@ -350,6 +350,28 @@ function App() {
                                         }}
                                     >
                                         Final Design Report
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="text-blue-500 hover:underline"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            toggleCS492Doc(`${import.meta.env.BASE_URL}documents/final_demo.pdf`);
+                                        }}
+                                    >
+                                        Final Demo Presentation (Suggested to use Canva Link Below)
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.canva.com/design/DAGme3Bs2oQ/NXSpXhYsUoLEXW5_Hng4mg/edit?utm_content=DAGme3Bs2oQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-500 hover:underline"
+                                    >
+                                        Final Demo Presentation (Canva Link)
                                     </a>
                                 </li>
                             </ul>
