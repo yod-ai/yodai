@@ -7,7 +7,7 @@ export default function CustomNavbar({ activeTab, setActiveTab }) {
         { key: "news", label: "News" },
         { key: "contact", label: "Contact Us" },
         { key: "documents", label: "CS491/2 Documents" },
-        { key: "demoMaterial", label: "Final Demo Material" },
+        { key: "demoMaterial", label: "CS Fair 2025 Material" },
     ];
 
     return (

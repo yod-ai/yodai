@@ -141,7 +141,7 @@ function App() {
                             About Köpük: Our First Software Solution
                         </h2>
                         <a
-                            href="https://www.canva.com/design/DAGh_m5tTpI/oO5j0Z5py2vxXvksYXCypw/edit?utm_content=DAGh_m5tTpI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                            href="https://www.canva.com/design/DAGme3Bs2oQ/NXSpXhYsUoLEXW5_Hng4mg/edit?utm_content=DAGme3Bs2oQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center space-x-2 transition-colors duration-200 mb-5"
@@ -352,16 +352,6 @@ function App() {
                                         Final Design Report
                                     </a>
                                 </li>
-                                <li>
-                                    <a
-                                        href="https://www.canva.com/design/DAGme3Bs2oQ/NXSpXhYsUoLEXW5_Hng4mg/edit?utm_content=DAGme3Bs2oQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-blue-500 hover:underline"
-                                    >
-                                        Final Demo Presentation (Canva Link)
-                                    </a>
-                                </li>
                             </ul>
                             {cs492Doc && (
                                 <div className="mt-6">
@@ -385,7 +375,7 @@ function App() {
                     <section className="max-w-7xl mx-auto p-4 md:p-6 pt-10 md:pt-20">
                         <div className="text-center mb-8">
                             <h1 className="text-4xl md:text-6xl font-extrabold text-[#DB4437]">
-                                Final Demo Material
+                                CS Fair 2025 Material
                             </h1>
                         </div>
                         <div className="mb-12 bg-white rounded-lg shadow-lg p-6">
@@ -487,6 +477,21 @@ function App() {
                                             className="w-6 h-6 mr-2"
                                         />
                                         Pet Adoption Habits & Preferences Survey Results
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.canva.com/design/DAGme3Bs2oQ/NXSpXhYsUoLEXW5_Hng4mg/edit?utm_content=DAGme3Bs2oQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-500 hover:underline flex items-center"
+                                    >
+                                         <img
+                                            src={`${import.meta.env.BASE_URL}static/canva.svg`}
+                                            alt="Canva"
+                                            className="w-6 h-6 mr-2"
+                                        />
+                                        Final Demo Presentation (Canva Link)
                                     </a>
                                 </li>
                             </ul>
